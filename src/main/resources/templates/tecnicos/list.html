@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="~{fragments/navbar.html :: header( title = 'Transportistas')}"></head>
+    <head th:replace="~{fragments/navbar.html :: header( title = 'Tecnicos')}"></head>
     <body>
         <main>
             <div class="container px-4 pb-5">
-                <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Shipper')}"></nav>
+                <nav th:replace="~{fragments/navbar.html :: navbar( active = 'Tecnicos')}"></nav>
                 <h1 class="pb-2 border-bottom">Lista de Tecnicos</h1>
-                <a class="btn btn-primary mt-4 mb-4" th:href="@{'/shipper/new'}">Nuevo Tecnico</a>
+                <a class="btn btn-primary mt-4 mb-4" th:href="@{'/tecnico/new'}">Nuevo Tecnico</a>
                 <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
                 <table class="table">
                     <tr>
                         <th>#</th>
-                        <th>Nombre de los Tecnicos</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Telefono</th>
+                        <th>Edad</th>
+                        <th></th>
+                        <th></th>
                     </tr>
-                    <tr th:each="shipper, info : ${shipperList}">
+                    <tr th:each="tecnico, info : ${tecnicoLista}">
                         <td th:text="${info.index + 1}"></td>
-                        <td th:text="${shipper.companyName}"></td>
-                        <td th:text="${shipper.phone}"></td>
+                        <td th:text="${tecnico.firstname}"></td>
+                        <td th:text="${tecnico.lastname}"></td>
+                        <td th:text="${tecnico.getDni()}"></td>
+                        <td th:text="${tecnico.getPhone()}"></td>
+                        <td th:text="${tecnico.getAge()}"></td>
                         <td><a class="btn btn-primary"
-                               th:href="@{'/shipper/edit' + '?id=' + ${shipper.shipperId}}">Editar</a>
+                               th:href="@{'/tecnico/edit' + '?id=' + ${tecnico.id}}">Editar</a>
                         </td>
                         <td><a class="btn btn-danger"
-                               th:href="@{'/shipper/delete' + '?id=' + ${shipper.shipperId}}">Borrar</a>
+                               th:href="@{'/tecnico/delete' + '?id=' + ${tecnico.id}}">Borrar</a>
                         </td>
                     </tr>
                 </table>

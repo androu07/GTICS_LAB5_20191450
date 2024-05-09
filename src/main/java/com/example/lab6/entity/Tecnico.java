@@ -15,8 +15,8 @@ public class Tecnico {
     @Column(name = "TechnicianID")
     private int id;
     @Column(nullable = false)
-    private String FirstName;
-    private String LastName;
+    private String firstname;
+    private String lastname;
     private String Dni;
     private String Phone;
     private int Age;
