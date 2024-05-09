@@ -17,7 +17,7 @@ public class Site {
     private int id;
 
     @MapsId("locationid")
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="LocationID")
     private Site locationid;
 

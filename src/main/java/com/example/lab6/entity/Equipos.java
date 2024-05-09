@@ -15,7 +15,7 @@ public class Equipos {
     private int id;
 
     @MapsId("siteid")
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="SiteID")
     private Site siteid;
 }
